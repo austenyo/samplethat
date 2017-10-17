@@ -1,0 +1,42 @@
+<!--
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <Page.actionBar>
+        <ActionBar title="SampleThat" backgroundColor="#3F51B5" color="#fff">
+                <ActionBar.actionItems>
+                    <ActionItem text="New" tap="{{ insert }}" ios.position="right" android.position="right"/>
+                </ActionBar.actionItems>
+        </ActionBar>>
+    </Page.actionBar>
+    <TabView tabsBackgroundColor="#3F51B5" selectedColor="#FF4081">
+        <TabView.items>
+            <TabViewItem title="RECORDER">
+                <TabViewItem.view>
+                    <ScrollView>
+                        <StackLayout >
+                            <ActivityIndicator color="#3489db" busy="{{ isRecording }}" />
+                            <button row="0" col="0" class="btn btn-primary btn-rounded-sm" text="Start Recording" tap="{{ startRecord }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Stop Recording" tap="{{ stopRecord }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Get File" tap="{{ getFile }}" />
+                            <label text="{{ recordedAudioFile }}" class="gray" textWrap="true" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Play Recorded" tap="{{ playRecordedFile }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Stop Playback" tap="{{ pauseAudio }}" />
+                        </StackLayout>
+                    </ScrollView>
+                </TabViewItem.view>
+            </TabViewItem>
+            <TabViewItem title="Files">
+                <TabViewItem.view>
+                    <ListView items="{{ lists }}">
+                        <ListView.itemTemplate>
+                            <StackLayout>
+                                <Label text="{{ list_name }}" />
+                                <Button class="btn btn-primary btn-rounded-sm" text="edit" tap="{{ navigateToTasks }}" />
+                                <Button class="btn btn-primary btn-rounded-sm" text="delete" tap="{{ applyBlueTheme }}" />
+                            </StackLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>-->

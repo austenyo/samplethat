@@ -1,0 +1,77 @@
+<Page loaded="pageLoaded">
+    <Page.actionBar>
+        <ActionBar title="SampleThat" backgroundColor="#3F51B5" color="#fff">
+                <ActionBar.actionItems>
+                    <ActionItem text="New" color="white" tap="{{ insert }}" ios.position="right" android.position="right"/>
+                </ActionBar.actionItems>
+        </ActionBar>>
+    </Page.actionBar>
+    <TabView tabsBackgroundColor="#3F51B5" selectedColor="#FF4081">
+        <TabView.items>
+            <TabViewItem title="RECORDER">
+                <TabViewItem.view>
+                    <StackLayout orientation="vertical" width="210" height="210" style.backgroundColor="lightgray">
+                            <ActivityIndicator color="#3489db" busy="{{ isRecording }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Start Recording" tap="{{ startRecord }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Stop Recording" tap="{{ stopRecord }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Get File" tap="{{ getFile }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Play Recorded" tap="{{ playRecordedFile }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Stop Playback" tap="{{ pauseAudio }}" />
+                            <label text="{{ recordedAudioFile }}" class="gray" textWrap="true" />
+                    </StackLayout>>
+                </TabViewItem.view>
+            </TabViewItem>
+            <!--<TabViewItem title="PLAYER">
+                <TabViewItem.view>
+                        <StackLayout>
+                            <button class="btn btn-primary btn-rounded-sm" text="Play Remote Audio" tap="{{ playRemoteFile }}" />
+                            <label class="blue center" text="Welcome To Fight Club!" textWrap="true" />
+                            <label text="REMINDER: Remote files can have a lag before playing due to processing and network speeds." class="h3" textWrap="true" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Play Local File" tap="{{ playLocalFile }}" />
+                            <label class="blue h3 text-center" text="Angel - Theory of a Deadman" textWrap="true" />
+                            <Button class="btn btn-primary btn-rounded-sm" text="Pause" tap="{{ pauseAudio }}" />
+                            <Button class="btn btn-primary btn-rounded-sm" text="Resume" tap="{{ resumePlayer }}" />
+                            <button class="btn btn-primary btn-rounded-sm" text="Stop" tap="{{ stopPlaying }}" />
+                            <Slider id="slider" minValue="0" maxValue="100" value="100" />
+                        </StackLayout>
+                </TabViewItem.view>
+            </TabViewItem>-->
+            <TabViewItem title="Folders">
+                <TabViewItem.view>
+                    <ScrollView>
+                    <StackLayout>
+                    <Repeater items="{{ lists }}">
+                        <Repeater.itemTemplate>
+                            <AbsoluteLayout>
+
+                                <!--BACKGROUND-->
+                                <GridLayout class="actions" rows="60, auto" columns="80, *, 80">
+                                    <Label col="0" row="0" text="Edit" class="action-edit" tap="editPerson" />
+                                    <Label col="1" row="0" />
+                                    <Label col="2" row="0" text="Delete" class="action-delete" tap="deletePerson" />
+                                    <!--DIVIDER-->
+                                    <StackLayout row="1" colSpan="3" class="divider"></StackLayout>
+                                </GridLayout>
+
+                                <!--FOREGROUND-->
+                                <StackLayout class="info"  pan="{{ GestureStateTypes }}">
+                                    <Label id="files" tap="{{ changeFolder}}" text="{{ list_name }}" class="primary"/>
+                                </StackLayout>
+
+                            </AbsoluteLayout>
+                        </Repeater.itemTemplate>
+                    </Repeater>
+                    </StackLayout>
+                    </ScrollView>>
+                    <!--<ListView items="{{ lists }}">
+                        <ListView.itemTemplate>
+                            <StackLayout>
+                                <Label text="{{ list_name }}"></Label>>
+                            </StackLayout>
+                        </ListView.itemTemplate>
+                    </ListView>-->
+                </TabViewItem.view>
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Page>
