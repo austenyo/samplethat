@@ -6,6 +6,18 @@
                 </ActionBar.actionItems>
         </ActionBar>>
     </Page.actionBar>
+    <RadSideDrawer>
+        <StackLayout class="sideStackLayout">
+            <StackLayout class="sideTitleStackLayout">
+                <Label text="Menu"></Label>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout class="sideStackLayout" items="{{ lists }}">
+                    <button class="btn btn-primary btn-rounded-sm" text="Edit"  />
+                    <button class="btn btn-primary btn-rounded-sm" text="Color" />
+        </StackLayout>
+        </ScrollView>
+        </StackLayout>
     <TabView tabsBackgroundColor="#3F51B5" selectedColor="#FF4081">
         <TabView.items>
             <TabViewItem title="RECORDER">
@@ -39,30 +51,18 @@
             <TabViewItem title="Folders">
                 <TabViewItem.view>
                     <ScrollView>
-                    <StackLayout>
-                    <Repeater items="{{ lists }}">
-                        <Repeater.itemTemplate>
+
+                        <RadListView id="radlistview" items="{{ lists }}" itemSwipe="true" pullToRefresh="true" pullToRefreshInitiated ="onPullToRefreshInitiated($event)">
+
+                        <RadListView.itemTemplate>
                             <AbsoluteLayout>
-
-                                <!--BACKGROUND-->
-                                <GridLayout class="actions" rows="60, auto" columns="80, *, 80">
-                                    <Label col="0" row="0" text="Edit" class="action-edit" tap="editPerson" />
-                                    <Label col="1" row="0" />
-                                    <Label col="2" row="0" text="Delete" class="action-delete" tap="deletePerson" />
-                                    <!--DIVIDER-->
-                                    <StackLayout row="1" colSpan="3" class="divider"></StackLayout>
-                                </GridLayout>
-
-                                <!--FOREGROUND-->
-                                <StackLayout class="info"  pan="{{ GestureStateTypes }}">
+                                <StackLayout class="info">
                                     <Label id="files" tap="{{ changeFolder}}" text="{{ list_name }}" class="primary"/>
                                 </StackLayout>
-
                             </AbsoluteLayout>
-                        </Repeater.itemTemplate>
-                    </Repeater>
-                    </StackLayout>
-                    </ScrollView>>
+                        </RadListView.itemTemplate>
+                        </RadListView>
+                    </ScrollView>
                     <!--<ListView items="{{ lists }}">
                         <ListView.itemTemplate>
                             <StackLayout>
@@ -74,4 +74,5 @@
             </TabViewItem>
         </TabView.items>
     </TabView>
+</RadSideDrawer>
 </Page>

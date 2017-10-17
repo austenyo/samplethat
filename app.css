@@ -92,45 +92,35 @@ button{
     horizontal-align: center;
 }
 
-
-Repeater .actions {
-    background-color: lightblue;
-    width: 100%;
+.sideStackLayout {
+    background-color: #555555;
+    color: #FFFFFF;
 }
 
-Repeater .actions Label {
-    horizontal-align: center;
-    padding: 20;
+.sideTitleStackLayout {
+    padding: 16;
+    font-weight: bold;
+    background-color: #333333;
 }
 
-.action-edit {
-    color: darkgreen;
+.sideLabel {
+    padding: 16;
 }
 
-.action-delete {
-    color: darkred;
+.listItemStackLayout {
+    padding: 16;
+    background-color: #FFFFFF;
 }
 
-Repeater .info {
-    background-color: whitesmoke;
-    color: darkgray;
-    width: 100%;
-    height: 60;
-    vertical-align: center;
+.archiveViewStackLayout {
+    padding: 16;
+    background-color: #387EF5;
+    color: #FFFFFF;
 }
 
-
-Repeater .info Label {
-    horizontal-align: center;
-}
-
-Repeater .info .primary {
-    font-size: 20;
-}
-
-Repeater .divider {
-    height: 2;
-    background-color: darkgray;
-    width: 100%;
+.deleteViewStackLayout {
+    padding: 16;
+    background-color: #EF473A;
+    color: #FFFFFF;
 }
 /* Your CSS goes here */

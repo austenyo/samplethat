@@ -12,13 +12,12 @@ var Observable = require("data/observable").Observable;
 var ObservableArray = require("data/observable-array").ObservableArray;
 var Sqlite = require("nativescript-sqlite");
 var Dialogs = require("ui/dialogs");
-var PanGestureEventData = require("ui/gestures");
-var GestureStateTypes = require("ui/gestures");
-var MIN_X = -80, MAX_X = 80, THRESHOLD=0.5;
-var AbsoluteLayout = require("ui/layouts/absolute-layout");
-var View =  require("ui/core/view");
-var label = new LabelModule.Label();
 var audioFolder = file_system_1.knownFolders.currentApp().getFolder("audio");
+var NativeScriptModule = require("nativescript-angular/nativescript.module");
+var RadSideDrawerComponent,SideDrawerType = require("nativescript-telerik-ui/sidedrawer/angular");
+var Toast = require('nativescript-toast');
+var drawer = SideDrawerType;
+
 
 var AudioDemo = (function (_super) {
     __extends(AudioDemo, _super);
@@ -276,48 +275,42 @@ exports.AudioDemo = AudioDemo;
 
 
 
-
-
-function GestureStateTypes(arg) {
-    var overlayView = View.arg.object;
-    var newX = overlayView.translateX + arg.deltaX;
-    if (arg.state === GestureStateTypes.ended && !(newX === MIN_X || newX === MAX_X)) {
-        // init our destination X coordinate to 0, in case neither THRESHOLD has been hit
-        var destX = 0;
-        // if user hit or crossed the THESHOLD either way, let's finish in that direction
-        if (newX <= MIN_X * THRESHOLD) {
-            destX = MIN_X;
-        }
-        else if (newX >= MAX_X * THRESHOLD) {
-            destX = MAX_X;
-        }
-        AbsoluteLayout.animate({
-            translate: { x: destX, y: 0 },
-            duration: 200
-        });
+var AppComponent = (function () {
+    function AppComponent() {
+       return label.text;
     }
-}
-exports.GestureStateTypes = GestureStateTypes;
+    AppComponent.prototype.ngOnInit = function () {
+        this.drawer = this.drawerComponent.sideDrawer;
+    };
+    AppComponent.prototype.onPullToRefreshInitiated(args, any);
+    {
+        var _this = this;
+        var radListView = args.object;
+        setTimeout(function () {
+            _this.createViewModel().push("Drums");
+            radListView.notifyPullToRefreshFinished();
+        }, 500);
+    }
+   /* AppComponent.prototype.onSwipeCellStarted = function (args) { };
+    AppComponent.prototype.onDelete = function () { };
+    AppComponent.prototype.onArchive = function () { };
+    AppComponent.prototype.onMenuTapped = function (value) {
+        Toast.makeText(value + " menu item selected").show();
+        this.drawer.closeDrawer();
+    };*/
+    __decorate([
+        core_1.ViewChild(angular_1.RadSideDrawerComponent)
+    ], AppComponent.prototype, "drawerComponent", void 0);
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: "my-app",
+            templateUrl: "app.component.html",
+        })
+    ], AppComponent);
+    return AppComponent;
+});
+exports.AppComponent = AppComponent;
 
-function editPerson(arg) {
-    // In a repeater itemView's tap event, the bindingContext of the item tapped
-    //   is the item from the list of items at the corresponding index
-    //   (i.e. third item's template is tapped, its binding context is the third item)
-    var dataItem = arg.object.bindingContext,
-        // since arg.object is the View that was tapped, we can get the full list
-        //    of people easily as each View holds a ref to its Page, and we know
-        //    what the page's bindingContext is b/c we set it in navigatingTo()
-        lists = arg.object.page.bindingContext.list_name, idxToEdit = lists.indexOf(dataItem);
-    console.log("Edit item #" + (idxToEdit + 1) + " - " + dataItem.list_name);
-}
-exports.editPerson = editPerson;
-
-function deletePerson(arg) {
-    // Same exact mechanism as editPerson() to get proper index, etc...
-    var dataItem = arg.object.bindingContext, lists = arg.object.page.bindingContext.list_name, idxToDelete = lists.indexOf(dataItem);
-    console.log("Delete item #" + (idxToDelete + 1) + " - " + dataItem.list_name);
-}
-exports.deletePerson = deletePerson;
 
 
 
