@@ -1,0 +1,54 @@
+<page class="page"
+      navigatingTo="onNavigatingTo"
+      xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+      xmlns:myDrawer="shared/my-drawer"
+      xmlns="http://www.nativescript.org/tns.xsd">
+
+
+    <ActionBar class="action-bar">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+       <!-- <ActionItem ios.visibility="collapsed" text="OPEN" tap="onDrawerButtonTap"></ActionItem>-->
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <!--<ActionItem text="OPEN"
+                    android.visibility="collapsed"
+                    tap="onDrawerButtonTap"
+                    ios.position="right">
+        </ActionItem>-->
+
+        <Label class="action-bar-title" text="FolderName" ></Label>
+    </ActionBar>
+
+
+    <StackLayout style.backgroundColor="darkred">
+        <ActivityIndicator color="#3489db" busy="{{ isRecording }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Start Recording" tap="{{ startRecord }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Stop Recording" tap="{{ stopRecord }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Get File" tap="{{ getFile }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Play Recorded" tap="{{ playRecordedFile }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Stop Playback" tap="{{ pauseAudio }}" />
+        <label text="{{ recordedAudioFile }}" class="gray" textWrap="true" />
+    </StackLayout>
+    <ListView items="{{ lists }}" itemTap="navigateToTasks">
+        <ListView.itemTemplate>
+            <StackLayout>
+                <Label id="files" text="{{ list_name }}" />
+            </StackLayout>
+        </ListView.itemTemplate>
+    </ListView>
+    <!--<nsDrawer:rad-side-drawer id="drawer" >
+        <nsDrawer:rad-side-drawer.mainContent>
+
+
+
+
+
+        </nsDrawer:rad-side-drawer.mainContent>
+        <nsDrawer:rad-side-drawer.drawerContent>
+            <myDrawer:MyDrawer/>
+        </nsDrawer:rad-side-drawer.drawerContent>
+    </nsDrawer:rad-side-drawer>-->
+</page>

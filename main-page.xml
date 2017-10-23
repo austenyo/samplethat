@@ -1,0 +1,99 @@
+<page class="page"
+      loaded="pageLoaded"
+      xmlns:Card="nativescript-cardview"
+      xmlns:FAB="nativescript-floatingactionbutton"
+      xmlns:PullRefresh="nativescript-pulltorefresh"
+      xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+      xmlns:myDrawer="shared/my-drawer"
+      xmlns="http://www.nativescript.org/tns.xsd">
+
+
+    <ActionBar class="action-bar">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+       <!-- <ActionItem ios.visibility="collapsed" text="OPEN" tap="onDrawerButtonTap"></ActionItem>-->
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <ActionItem text="OPEN"
+                    android.visibility="collapsed"
+                    tap="onDrawerButtonTap"
+                    ios.position="left"
+                    android.position="left">
+        </ActionItem>
+        <ActionItem text="New" Color="white" tap="insert" ios.position="right" android.position="right">
+        </ActionItem>
+
+        <Label class="action-bar-title" text="SAMPLETHAT"></Label>
+    </ActionBar>
+    <grid-layout rows="auto,*" height="100%" width="100%">
+    
+        <PullRefresh:PullToRefresh refresh="{{ refresh }}" color="#3489db">
+            <!-- //<button class="fab-button-bottom" text="testing" tap="{{ insert }}" /> -->
+            <ListView items="{{ lists }}" itemTap="navigateToTasks">
+                <ListView.itemTemplate>
+
+                    <Card:CardView class="cardStyle"  margin="10" elevation="40" radius="5">
+                        <Label id="files" class="files" text="{{ list_name }}"/>
+                    </Card:CardView>
+                </ListView.itemTemplate>
+            </ListView>
+          
+        </PullRefresh:PullToRefresh>
+         <FAB:fab
+                    id="fabButton"
+                    tap="{{ insert }}"
+                    row="1"
+                    icon="res://ic_add_white"
+                    rippleColor="#f1f1f1"
+                    class="fab-button-bottom" />
+    </grid-layout>
+    <!-- <grid-layout rows="auto,*" height="100%" width="100%">
+        <FAB:fab
+                id="fabButton"
+                tap="{{ insert }}"
+                row="1"
+                icon="res://ic_add_white"
+                rippleColor="#f1f1f1"
+                class="fab-button-bottom" />
+    </grid-layout> -->
+
+    <!--<nsDrawer:rad-side-drawer id="drawer" showOverNavigation="true">
+        <nsDrawer:RadSideDrawer.drawerTransition>
+            <nsDrawer:SlideInOnTopTransition/>
+        </nsDrawer:RadSideDrawer.drawerTransition>
+
+        <nsDrawer:rad-side-drawer.drawerContent>
+            <myDrawer:MyDrawer/>
+        </nsDrawer:rad-side-drawer.drawerContent>
+
+        <nsDrawer:rad-side-drawer.mainContent>
+                    &lt;!&ndash;<TabViewItem title="PLAYER">
+                        <TabViewItem.view>
+                                <StackLayout>
+                                    <button class="btn btn-primary btn-rounded-sm" text="Play Remote Audio" tap="{{ playRemoteFile }}" />
+                                    <label class="blue center" text="Welcome To Fight Club!" textWrap="true" />
+                                    <label text="REMINDER: Remote files can have a lag before playing due to processing and network speeds." class="h3" textWrap="true" />
+                                    <button class="btn btn-primary btn-rounded-sm" text="Play Local File" tap="{{ playLocalFile }}" />
+                                    <label class="blue h3 text-center" text="Angel - Theory of a Deadman" textWrap="true" />
+                                    <Button class="btn btn-primary btn-rounded-sm" text="Pause" tap="{{ pauseAudio }}" />
+                                    <Button class="btn btn-primary btn-rounded-sm" text="Resume" tap="{{ resumePlayer }}" />
+                                    <button class="btn btn-primary btn-rounded-sm" text="Stop" tap="{{ stopPlaying }}" />
+                                    <Slider id="slider" minValue="0" maxValue="100" value="100" />
+                                </StackLayout>
+                        </TabViewItem.view>
+                    </TabViewItem>&ndash;&gt;
+            <ListView items="{{ lists }}" itemTap="navigateToTasks">
+                <ListView.itemTemplate>
+                    <StackLayout>
+                        <Label text="{{ list_name }}" />
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+
+        </nsDrawer:rad-side-drawer.mainContent>
+
+    </nsDrawer:rad-side-drawer>-->
+</page>
