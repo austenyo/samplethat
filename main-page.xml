@@ -1,0 +1,66 @@
+<page class="page"
+      loaded="pageLoaded"
+      xmlns:Card="nativescript-cardview"
+      xmlns:FAB="nativescript-floatingactionbutton"
+      xmlns:PullRefresh="nativescript-pulltorefresh"
+      xmlns:nsDrawer="nativescript-pro-ui/sidedrawer"
+      xmlns:myDrawer="shared/my-drawer"
+      xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:lv="nativescript-pro-ui/listview">
+
+
+    <ActionBar class="action-bar">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+       <!-- <ActionItem ios.visibility="collapsed" text="OPEN" tap="onDrawerButtonTap"></ActionItem>-->
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        
+        
+  <StackLayout orientation="horizontal" 
+    ios:horizontalAlignment="center"
+    android:horizontalAlignment="center" class="art">
+    <Image src="res://topbar_burned"></Image>
+  </StackLayout>
+  
+        <ActionItem  tap="{{ insert }}" ios.systemIcon="4" android.systemIcon="ic_menu_add" ios.position="right" />
+ 
+</ActionBar>
+
+ <StackLayout backgroundColor="black">
+             <PullRefresh:PullToRefresh refresh="{{ refresh }}">
+         <ListView items="{{ lists }}" longPress="{{ delete }}" itemTap="navigateToTasks">
+            <ListView.itemTemplate>
+                    <Card:CardView class="cardstyle" margin="0" elevation="40" radius="5">
+                        <Label id="files" text="{{ list_name }}"/>
+                    </Card:CardView>
+                </ListView.itemTemplate>
+            </ListView>
+            </PullRefresh:PullToRefresh> 
+         <!-- <!-- <FAB:fab
+                id="fabButton"
+                row="1"
+                icon="res://nstudio"
+                tap="fabTap"
+                rippleColor="#ffffff"
+                class="fab-button-bottom"
+                hideOnSwipeOfView="userList"
+                swipeAnimation="slideUp"/> -->
+    </StackLayout>
+    </page>
+
+
+
+    <!-- <StackLayout style.backgroundColor="lightgray">4
+    <ListView items="{{ lists }}" itemTap="navigateToTasks">
+    
+                <ListView.itemTemplate>
+
+                    <Card:CardView class="cardStyle"  margin="10" elevation="40" radius="5">
+                        <Label id="files" class="files" text="{{ list_name }}"/>
+                    </Card:CardView>
+                </ListView.itemTemplate>
+            </ListView>
+            </StackLayout> -->
