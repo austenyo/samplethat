@@ -1,0 +1,53 @@
+<page class="page"
+      navigatingTo="onNavigatingTo"
+      xmlns:Card="nativescript-cardview"
+      xmlns="http://www.nativescript.org/tns.xsd"
+>
+
+
+    <ActionBar class="action-bar">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+       <!-- <ActionItem ios.visibility="collapsed" text="OPEN" tap="onDrawerButtonTap"></ActionItem>-->
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        
+        
+  <StackLayout orientation="horizontal" 
+    ios:horizontalAlignment="center"
+    android:horizontalAlignment="center" class="art">
+    <Image src="res://topbar_burned"></Image>
+  </StackLayout>
+  
+        <ActionItem  tap="{{ insert }}" ios.systemIcon="4" android.systemIcon="ic_menu_add" ios.position="right" />
+ 
+</ActionBar>
+
+ <StackLayout  backgroundColor="black">
+        <ScrollView>
+            <StackLayout  id="swipable" longPress="{{ delete }}">
+                    <Card:CardView class="cardstyle2" style="background-color: green;" margin="0" elevation="40" radius="5">
+                        <Label id="files2" text="Drums"/>
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" style="background-color: Blue;" margin="0" elevation="40" radius="5">
+                        <Label id="files2" text="Hats"/>
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" style="background-color: red;" margin="0" elevation="40" radius="5">
+                        <Label id="files2" text="Keys"/>
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" style="background-color: purple;" margin="0" elevation="40" radius="5">
+                        <Label id="files2" text="Synth"/>
+                    </Card:CardView>
+               </StackLayout> 
+            </ScrollView>
+         <ListView id="swipable" items="{{ lists }}" longPress="{{ delete }}">
+            <ListView.itemTemplate>
+                    <Card:CardView class="cardstyle2" margin="0" elevation="40" radius="5">
+                        <Label id="files2" text="{{ list_name }}"/>
+                    </Card:CardView>
+                </ListView.itemTemplate>
+            </ListView>
+    </StackLayout>
+    </page>

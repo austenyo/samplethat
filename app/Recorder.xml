@@ -1,0 +1,82 @@
+<page class="page"
+      navigatingTo="onNavigatingTo"
+      xmlns:Card="nativescript-cardview"
+      xmlns="http://www.nativescript.org/tns.xsd">
+
+
+    <ActionBar class="action-bar" title="Folders">
+        <!--
+        Use the NavigationButton as a side-drawer button in Android because ActionItems are shown on the right side of the ActionBar
+        -->
+       <!-- <ActionItem ios.visibility="collapsed" text="OPEN" tap="onDrawerButtonTap"></ActionItem>-->
+        <!--
+        Use the ActionItem for IOS with position set to left. Using the NavigationButton as a side-drawer button in iOS is not possible, because its function is to always navigate back in the application.
+        -->
+        <!--<ActionItem text="OPEN"
+                    android.visibility="collapsed"
+                    tap="onDrawerButtonTap"
+                    ios.position="right">
+        </ActionItem>-->
+        <NavigationButton text="Go Back"  tap="navigateToTasks" ios.position="left" android.systemIcon="ic_menu_back"/>
+        
+    </ActionBar>
+
+
+    <StackLayout style.backgroundColor="black">
+        <ActivityIndicator color="red" busy="{{ isRecording }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="(0)" tap="{{ startRecord }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="||" tap="{{ stopRecord }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Get File" tap="{{ getFile }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Play Recorded" tap="{{ playRecordedFile }}" />
+        <button class="btn btn-primary btn-rounded-sm" text="Stop Playback" tap="{{ pauseAudio }}" />
+        <label text="{{ recordedAudioFile }}" class="gray" textWrap="true" />
+        <ScrollView>
+            <StackLayout>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+                    <Card:CardView class="cardstyle2" margin="1" elevation="40" radius="5">
+                        <Label id="files2" text="random.mp3" tap="onShare"/>
+                        <!-- <button class="cloud"/> -->
+                    </Card:CardView>
+               </StackLayout> 
+            </ScrollView>
+    </StackLayout>
+    <!--<nsDrawer:rad-side-drawer id="drawer" >
+        <nsDrawer:rad-side-drawer.mainContent>
+
+
+
+
+
+        </nsDrawer:rad-side-drawer.mainContent>
+        <nsDrawer:rad-side-drawer.drawerContent>
+            <myDrawer:MyDrawer/>
+        </nsDrawer:rad-side-drawer.drawerContent>
+    </nsDrawer:rad-side-drawer>-->
+</page>
